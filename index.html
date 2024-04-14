@@ -55,7 +55,7 @@
   </div>
 </main>
 
-<!-- customer page -->
+<!-- customer section -->
 <main id="CustomerSection" class="container-fluid">
   <div class="container d-flex flex-grow-1 flex-column">
       <div class="position-relative d-inline-block mt-3 mt-lg-4 mt-md-4">
@@ -231,7 +231,189 @@
   </div>
 </div>
 
+<!-- item section -->
+<main id="ItemSection" class="container-fluid">
+  <div class="container d-flex flex-grow-1 flex-column">
+      <div class="position-relative d-inline-block mt-3 mt-lg-4 mt-md-4">
+          <h2 id="H1-1" style="font-family: Arial">
+              <i class="fa-sharp fa-solid fa-computer"></i> Item
+          </h2>
+      </div>
+  </div>
+  <div class="container d-flex flex-grow-1 flex-column" style="background-color: #dfe4ea">
+      <div class="position-relative d-inline-block mt-3 mt-lg-4 mt-md-4">
+          <h6 id="H6-1">Home > Item</h6>
+          <hr>
+      </div>
+      <div class="row justify-content-around" style="height: max-content">
+          <div class="col-10 col-md-5 col-lg-4 p-0 mt-2" style="background-color: white">
+              <h4 class="text-center p-2 text-light" style="background: green">Search Item</h4>
+              <div class="mb-3 ms-3 me-3 ">
+                  <input class="form-control me-2" id="ItemIdSearch" placeholder="Input Name/Code/Tp Here"
+                         type="search">
+              </div>
+              <form>
+                  <button class="btn btn-primary ms-3 mb-3 ms-md-3 ms-lg-3 btn-success" id="btnSearchItem"
+                          type="button">Search
+                  </button>
+                  <button class="btn btn-warning ms-3 mb-3 ms-md-3 ms-lg-3" id="clearSearchItem" type="button">Clear
+                  </button>
+              </form>
+          </div>
+          <div class="col-10 col-md-5 col-lg-5 mt-2">
+              <button class="btn btn-primary mt-2 m-1" data-bs-target="#registerItem"
+                      data-bs-toggle="modal" id="btnAddItem" type="button">+ New Item
+              </button>
 
+              <button class="btn btn-warning mt-2 m-1" data-bs-target="#updateItem"
+                      data-bs-toggle="modal" type="button">Update Item
+              </button>
+
+              <button class="btn btn-danger mt-2 m-1" data-bs-target="#deleteItem"
+                      data-bs-toggle="modal" type="button">Delete Item
+              </button>
+
+              <button class="btn btn-success mt-2 m-1" id="btnViewAllItems" type="button">View All Items</button>
+          </div>
+      </div>
+      <div class="row mt-1 mt-md-2 mt-lg-5 justify-content-around" style="height: 250px">
+          <div class="col-10">
+              <div class="ItemTableDiv overflow-auto" style="height: 200px">
+                  <table class="table table-success table-striped table-bordered table-hover">
+                      <thead class="text-light table-dark text-center  table-bordered sticky-top">
+                      <tr>
+                          <th>Item Code</th>
+                          <th>Item Name</th>
+                          <th>Quantity</th>
+                          <th>Price</th>
+                      </tr>
+                      </thead>
+                      <tbody id="ItemTable"></tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</main>
+<!-------------------- Add, Update, Delete items -------------------->
+<div id="registerItem" aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header" style="background: dodgerblue">
+              <h5 class="modal-title text-light">Add Item</h5>
+              <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="ms-3 me-3">
+                      <label class="form-label fw-bold mb-0" for="txtItemsId">Item Code :</label>
+                      <input class="form-control" id="txtItemsId" type="text" value="I00-1001" disabled>
+                      <span class="control-error" id="lblItemId"></span>
+                  </div>
+                  <div class="ms-3 me-3">
+                      <label class="form-label fw-bold mb-0" for="txtItemName">Item Name :</label>
+                      <input class="form-control" id="txtItemName" type="text">
+                      <span class="control-error" id="lblItemName"></span>
+                  </div>
+                  <div class="ms-3 me-3">
+                      <label class="form-label fw-bold mb-0" for="txtItemQty">Quantity :</label>
+                      <input class="form-control" id="txtItemQty" type="text">
+                      <span class="control-error" id="lblItemQty"></span>
+                  </div>
+                  <div class="ms-3 me-3">
+                      <label class="form-label fw-bold mb-0" for="txtItemPrice">Price :</label>
+                      <input class="form-control" id="txtItemPrice" type="number">
+                      <span class="control-error" id="lblItemPrice"></span>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+              <button class="btn btn-warning" id="btnClearI" type="reset">Clear</button>
+              <button class="btn btn-primary" id="btnISave" type="button">Save</button>
+          </div>
+      </div>
+  </div>
+</div>
+<div id="updateItem" aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header  bg-warning">
+              <h5 class="modal-title text-dark">Update Item</h5>
+              <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="ms-3 me-3">
+                      <label class="form-label fw-bold mb-0" for="searchItemId">Item Code :</label>
+                      <input class="form-control" disabled id="searchItemId" type="text">
+                      <span class="control-error" id="lblUItemId"></span>
+                  </div>
+                  <div class="ms-3 me-3">
+                      <label class="form-label fw-bold mb-0" for="updateItemName">Item Name :</label>
+                      <input class="form-control" id="updateItemName" type="text">
+                      <span class="control-error" id="lblUItemName"></span>
+                  </div>
+                  <div class="ms-3 me-3">
+                      <label class="form-label fw-bold mb-0" for="updateItemQty">Quantity :</label>
+                      <input class="form-control" id="updateItemQty" type="text">
+                      <span class="control-error" id="lblUItemQty"></span>
+                  </div>
+                  <div class="ms-3 me-3">
+                      <label class="form-label fw-bold mb-0" for="updateItemPrice">Price :</label>
+                      <input class="form-control" id="updateItemPrice" type="number">
+                      <span class="control-error" id="lblUItemPrice"></span>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+              <button class="btn btn-warning" id="btnUclearI" type="reset">Clear</button>
+              <button class="btn btn-primary" id="btnUpdateItem" type="button">Update</button>
+          </div>
+      </div>
+  </div>
+</div>
+<div id="deleteItem" aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header  bg-danger">
+              <h5 class="modal-title text-light">Delete Item</h5>
+              <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="ms-3 me-3">
+                      <label class="form-label fw-bold mb-0" for="searchDItemId">Item Code :</label>
+                      <input class="form-control" id="searchDItemId"
+                             type="text">
+                  </div>
+                  <fieldset disabled>
+                      <div class="ms-3 me-3">
+                          <label class="form-label fw-bold mb-0" for="DItemName">Item Name :</label>
+                          <input class="form-control disabled" id="DItemName"
+                                 type="text">
+                      </div>
+                      <div class="ms-3 me-3">
+                          <label class="form-label fw-bold mb-0" for="DItemQty">Quantity :</label>
+                          <input class="form-control disabled" id="DItemQty"
+                                 type="text">
+                      </div>
+                      <div class="ms-3 me-3">
+                          <label class="form-label fw-bold mb-0" for="DItemPrice">Price :</label>
+                          <input class="form-control disabled" id="DItemPrice" type="number">
+                      </div>
+                  </fieldset>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+              <button class="btn btn-warning" id="btnDclearI" type="reset">Clear</button>
+              <button class="btn btn-danger" id="btnDeleteItems" type="button">Delete</button>
+          </div>
+      </div>
+  </div>
+</div>
 
 <script rel="script" src="assets/styles/bootstrap-5.2.1/js/jquery-3.6.1.min.js"></script>
 <script rel="script" src="assets/styles/bootstrap-5.2.1/js/bootstrap.js"></script>
