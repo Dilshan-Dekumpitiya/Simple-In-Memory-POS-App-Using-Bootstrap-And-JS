@@ -1,1 +1,1 @@
-# Simple POS App using Bootsrap and JS
+# Simple In Memory POS App using Bootsrap and JS

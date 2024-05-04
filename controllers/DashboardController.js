@@ -1,4 +1,5 @@
 /** Load Page View Change and convert to SPA **/
+
 $(document).ready(function () {
     const hide_all_contents = function () {
         $('#HomeSection').css('display', 'none');
@@ -9,7 +10,6 @@ $(document).ready(function () {
     };
 
     hide_all_contents();
-    
     $('#HomeSection').css('display', 'block');
 
     $('#homeBtn').click(function () {
